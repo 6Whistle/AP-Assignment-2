@@ -1,0 +1,116 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             ARMex, CODE, READONLY
+    2 00000000                 ENTRY
+    3 00000000         
+    4 00000000 E59F0048        LDR              r0, =Value1 ;Load Value1's addr
+                                                            ess at  r0
+    5 00000004 E59F1048        LDR              r1, =Value2 ;Load Value2's addr
+                                                            ess at  r1
+    6 00000008 E59F403C        LDR              r4, Address1 ;Address to store 
+                                                            state(is same)
+    7 0000000C E3A0500A        MOV              r5, #0x0A   ;state
+    8 00000010         
+    9 00000010         Main
+   10 00000010 E4D02001        LDRB             r2, [r0], #1 ;load 1bit char fr
+                                                            om Value1
+   11 00000014 E4D13001        LDRB             r3, [r1], #1 ;load 1bit char fr
+                                                            om Value2
+   12 00000018         
+   13 00000018 E1520003        CMP              r2, r3      ;compare r2, r3
+   14 0000001C 13A0500B        MOVNE            r5, #0x0B   ;if r2 != r3, r5 = 
+                                                            0x0B 
+   15 00000020         
+   16 00000020 E3520000        CMP              r2, #0      ;compare r2, 0
+   17 00000024 0A000000        BEQ              Endline     ;if r2 == 0, goto E
+                                                            ndline
+   18 00000028 EAFFFFF8        B                Main        ;else goto Main
+   19 0000002C         
+   20 0000002C         Endline
+   21 0000002C E5845000        STR              r5, [r4]    ;store state at Add
+                                                            ress1
+   22 00000030 E1A0F00E        MOV              pc, lr
+   23 00000034         
+   24 00000034         
+   25 00000034 48 65 6C 
+              6C 6F 5F 
+              77 6F 72 
+              6C 64 00 Value1  DCB              "Hello_world",0 ;Compare String
+                                                            
+   26 00000040 48 65 6C 
+              6C 6F 5F 
+              77 6F 72 
+              6C 64 00 Value2  DCB              "Hello_world",0 ;CompareString
+   27 0000004C         
+   28 0000004C 00004000 
+                       Address1
+                               DCD              &4000
+   29 00000050         
+   30 00000050                 END
+              00000000 
+              00000000 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=ARM9E --apcs=interwork 
+--depend=.\objects\assignment2_1.d -o.\objects\assignment2_1.o -IC:\Keil_v5\ARM
+\RV31\INC -IC:\Keil_v5\ARM\CMSIS\Include --predefine="__EVAL SETA 1" --predefin
+e="__UVISION_VERSION SETA 521" --list=.\listings\assignment2_1.lst assignment2_
+1.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+ARMex 00000000
+
+Symbol: ARMex
+   Definitions
+      At line 1 in file assignment2_1.s
+   Uses
+      None
+Comment: ARMex unused
+Address1 0000004C
+
+Symbol: Address1
+   Definitions
+      At line 28 in file assignment2_1.s
+   Uses
+      At line 6 in file assignment2_1.s
+Comment: Address1 used once
+Endline 0000002C
+
+Symbol: Endline
+   Definitions
+      At line 20 in file assignment2_1.s
+   Uses
+      At line 17 in file assignment2_1.s
+Comment: Endline used once
+Main 00000010
+
+Symbol: Main
+   Definitions
+      At line 9 in file assignment2_1.s
+   Uses
+      At line 18 in file assignment2_1.s
+Comment: Main used once
+Value1 00000034
+
+Symbol: Value1
+   Definitions
+      At line 25 in file assignment2_1.s
+   Uses
+      At line 4 in file assignment2_1.s
+Comment: Value1 used once
+Value2 00000040
+
+Symbol: Value2
+   Definitions
+      At line 26 in file assignment2_1.s
+   Uses
+      At line 5 in file assignment2_1.s
+Comment: Value2 used once
+6 symbols
+340 symbols in table

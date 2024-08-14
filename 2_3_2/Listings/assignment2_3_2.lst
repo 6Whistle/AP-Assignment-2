@@ -1,0 +1,61 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             ARMex, CODE, READONLY ;Assignme
+                                                            nt3 using n(n+10)
+    2 00000000                 ENTRY
+    3 00000000         
+    4 00000000 E3A00001        MOV              r0, #1
+    5 00000004 E59F101C        LDR              r1, Address1 ;Address to store
+    6 00000008         
+    7 00000008 E1A02080        MOV              r2, r0, LSL #1 ;r2 = 0010
+    8 0000000C E0822180        ADD              r2, r0, LSL #3 ;r2 = 0010 + 100
+                                                            0 = 1010
+    9 00000010         
+   10 00000010 E3A0300A        MOV              r3, #10     ;n
+   11 00000014         
+   12 00000014 E1A04002        MOV              r4, r2      ;r4 = 10
+   13 00000018 E0844003        ADD              r4, r3      ;r4 = 10 + n
+   14 0000001C E0050394        MUL              r5, r4, r3  ;r4 = (10 + n)n
+   15 00000020         
+   16 00000020 E5815000        STR              r5, [r1]    ;Store Data(r5)
+   17 00000024 E1A0F00E        MOV              pc, lr
+   18 00000028         
+   19 00000028 00004000 
+                       Address1
+                               DCD              &4000       ;Address to store a
+                                                            rray
+   20 0000002C         
+   21 0000002C                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=ARM9E --apcs=interwork 
+--depend=.\objects\assignment2_3_2.d -o.\objects\assignment2_3_2.o -IC:\Keil_v5
+\ARM\RV31\INC -IC:\Keil_v5\ARM\CMSIS\Include --predefine="__EVAL SETA 1" --pred
+efine="__UVISION_VERSION SETA 521" --list=.\listings\assignment2_3_2.lst assign
+ment2_3_2.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+ARMex 00000000
+
+Symbol: ARMex
+   Definitions
+      At line 1 in file assignment2_3_2.s
+   Uses
+      None
+Comment: ARMex unused
+Address1 00000028
+
+Symbol: Address1
+   Definitions
+      At line 19 in file assignment2_3_2.s
+   Uses
+      At line 5 in file assignment2_3_2.s
+Comment: Address1 used once
+2 symbols
+334 symbols in table

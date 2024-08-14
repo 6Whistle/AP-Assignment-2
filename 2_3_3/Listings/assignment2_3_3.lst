@@ -1,0 +1,62 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             ARMex, CODE, READONLY ;Assignme
+                                                            nt3 using unRolling
+                                                            
+    2 00000000                 ENTRY
+    3 00000000         
+    4 00000000 E59F102C        LDR              r1, Address1 ;Address to store
+    5 00000004         
+    6 00000004 E3A0000B        MOV              r0, #11     ;ADD 11 ~ 29
+    7 00000008 E280000D        ADD              r0, #13
+    8 0000000C E280000F        ADD              r0, #15
+    9 00000010 E2800011        ADD              r0, #17
+   10 00000014 E2800013        ADD              r0, #19
+   11 00000018 E2800015        ADD              r0, #21
+   12 0000001C E2800017        ADD              r0, #23
+   13 00000020 E2800019        ADD              r0, #25
+   14 00000024 E280001B        ADD              r0, #27
+   15 00000028 E280001D        ADD              r0, #29
+   16 0000002C         
+   17 0000002C E5810000        STR              r0, [r1]    ;Store Data
+   18 00000030 E1A0F00E        MOV              pc, lr
+   19 00000034         
+   20 00000034 00004000 
+                       Address1
+                               DCD              &4000       ;Address to store a
+                                                            rray
+   21 00000038         
+   22 00000038                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=ARM9E --apcs=interwork 
+--depend=.\objects\assignment2_3_3.d -o.\objects\assignment2_3_3.o -IC:\Keil_v5
+\ARM\RV31\INC -IC:\Keil_v5\ARM\CMSIS\Include --predefine="__EVAL SETA 1" --pred
+efine="__UVISION_VERSION SETA 521" --list=.\listings\assignment2_3_3.lst assign
+ment2_3_3.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+ARMex 00000000
+
+Symbol: ARMex
+   Definitions
+      At line 1 in file assignment2_3_3.s
+   Uses
+      None
+Comment: ARMex unused
+Address1 00000034
+
+Symbol: Address1
+   Definitions
+      At line 20 in file assignment2_3_3.s
+   Uses
+      At line 4 in file assignment2_3_3.s
+Comment: Address1 used once
+2 symbols
+334 symbols in table
